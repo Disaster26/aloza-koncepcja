@@ -32,6 +32,13 @@
   t.addEventListener('keydown',function(e){if(e.key==='Enter'){var f=e.target.closest('figure'),im=f&&f.querySelector('img[data-duze]');if(im&&lb)otworz(im);}});
  });
 
+ // mozaika wnętrz: powiększenie po kliknięciu
+ document.querySelectorAll('.mozaika figure').forEach(function(f){
+  var im=f.querySelector('img[data-duze]');if(!im||!lb)return;
+  f.addEventListener('click',function(){otworz(im);});
+  f.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();otworz(im);}});
+ });
+
  // galeria apartamentu: licznik i miniatury
  var gl=document.querySelector('.glowne');
  if(gl){

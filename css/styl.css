@@ -118,6 +118,27 @@ section{padding:clamp(64px,8vw,120px) 0}
 .siatka{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
 .siatka .ap{flex:none}
 .uwaga{margin:16px 0 0;color:var(--tx2);font-size:14.5px}
+/* wnętrza: mozaika zdjęć */
+.mozaika{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.mozaika figure{margin:0;position:relative;overflow:hidden;background:var(--sz);cursor:zoom-in;aspect-ratio:4/3}
+.mozaika figure:first-child{grid-column:1/3;grid-row:1/3;aspect-ratio:auto}
+.mozaika img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.mozaika figure:hover img{transform:scale(1.03)}
+.mozaika figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 16px 12px;background:linear-gradient(transparent,rgba(10,31,92,.82));color:#fff;font-size:14.5px;line-height:1.3}
+.mozaika figcaption b{display:block;font-family:"Fraunces",Georgia,serif;font-size:19px;font-weight:600}
+.mozaika figure:first-child figcaption b{font-size:24px}
+.mozaika figure:focus-visible{outline:3px solid var(--zo);outline-offset:2px}
+.ap .za-dobe{margin:8px 0 0;font-size:12.5px;color:var(--tx2)}
+.mapa-pod{margin:14px 0 0;font-size:16px;color:var(--tx2)}
+.mapa-pod b{color:var(--gr2)}
+.mapa-pod a{color:var(--gr);font-weight:700;margin-left:4px}
+@media (max-width:700px){
+ .mozaika{grid-template-columns:1fr 1fr;gap:10px}
+ .mozaika figure:first-child{grid-column:1/-1;grid-row:auto;aspect-ratio:4/3}
+ .mozaika figure:last-child{grid-column:1/-1;aspect-ratio:16/9}
+ .mozaika figcaption{padding:22px 10px 8px;font-size:12.5px}
+ .mozaika figcaption b{font-size:16px}
+}
 /* galeria */
 .gal figure{margin:0;flex:0 0 clamp(250px,28vw,380px);scroll-snap-align:start;aspect-ratio:4/3;overflow:hidden;background:var(--sz);cursor:zoom-in}
 .gal figure.pion{flex-basis:clamp(188px,21vw,285px)}
@@ -146,7 +167,7 @@ section{padding:clamp(64px,8vw,120px) 0}
 .spacer iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .spacer.duzy{aspect-ratio:16/9;max-height:78svh;width:100%}
 /* apartament - podstrona */
-.apg{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:clamp(28px,4vw,64px);align-items:start}
+.apg{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(0,1fr);gap:clamp(28px,4vw,64px);align-items:start}
 .apg .glowne{position:relative}
 .apg .glowne .tor{padding:0;margin:0;gap:0}
 .apg .glowne figure{flex:0 0 100%;margin:0;aspect-ratio:4/3;background:var(--gr2);scroll-snap-align:start;cursor:zoom-in;display:flex;align-items:center;justify-content:center}
@@ -338,3 +359,6 @@ form .btn{grid-column:1/-1;justify-self:start}
  .hpanel .lawica{display:none}
  .hpanel h1{font-size:clamp(25px,7vw,32px)}
 }
+/* mapa z trasą na plażę: wyższa, żeby było widać morze */
+.kon .mapa{aspect-ratio:1/1}
+@media (max-width:700px){.kon .mapa{aspect-ratio:4/5}}
